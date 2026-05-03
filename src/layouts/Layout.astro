@@ -64,5 +64,20 @@ const { title, description = 'Epromar d.o.o. — servis, prodaja, vzdrževanje i
   </head>
   <body class="font-sans text-gray-800 bg-white">
     <slot />
+
+    <!-- Netlify Identity widget — za prijavo v /admin -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
+    <script is:inline>
+      // Po prijavi/registraciji preusmeri v admin
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>

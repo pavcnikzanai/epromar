@@ -1,0 +1,128 @@
+# ============================================================
+# Decap CMS konfiguracija — Epromar
+# ============================================================
+
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Dodano: {{collection}} "{{slug}}"'
+    update: 'Posodobljeno: {{collection}} "{{slug}}"'
+    delete: 'Odstranjeno: {{collection}} "{{slug}}"'
+    uploadMedia: 'Naložen medij: {{path}}'
+    deleteMedia: 'Odstranjen medij: {{path}}'
+
+# Lokalni razvojni način (za testiranje pred deployem)
+local_backend: true
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+site_url: https://epromar.netlify.app
+display_url: https://epromar.netlify.app
+logo_url: https://epromar.netlify.app/favicon.svg
+
+locale: 'en'
+
+# ============================================================
+# Sekcije za urejanje
+# ============================================================
+
+collections:
+
+  # ---------- HERO SEKCIJA ----------
+  - name: "hero"
+    label: "Hero (zgornja sekcija)"
+    label_singular: "Hero vsebina"
+    description: "Glavna sekcija, ki jo obiskovalec vidi prvo. Naslov, podnaslov, kontakti."
+    files:
+      - file: "src/content/hero.json"
+        name: "hero"
+        label: "Hero vsebina"
+        fields:
+          - { label: "Glavni naslov — 1. vrstica", name: "title_1", widget: "string", default: "Servis, prodaja," }
+          - { label: "Glavni naslov — 2. vrstica", name: "title_2", widget: "string", default: "vzdrževanje in" }
+          - { label: "Glavni naslov — poudarek (italic)", name: "title_accent", widget: "string", default: "povezovanje", hint: "To bo izpisano poševno v elegantnem fontu" }
+          - { label: "Glavni naslov — zaključek", name: "title_end", widget: "string", default: "računalnikov." }
+          - { label: "Podnaslov / opis", name: "subtitle", widget: "text", default: "Celostne IT rešitve za manjša in srednja podjetja v Celju in okolici. Servis, omrežna infrastruktura in outsourcing IT podpore — od leta 1993." }
+          - { label: "Telefonska številka", name: "telefon", widget: "string", default: "03 490 11 90" }
+          - { label: "Caption pod fotografijo", name: "caption", widget: "string", default: "servis · omrežja · strežniki · IT podpora", hint: "Tehnični seznam pod fotografijo na desni" }
+          - { label: "Naslov pisarne", name: "naslov", widget: "string", default: "Kosovelova 16" }
+          - { label: "Mesto", name: "mesto", widget: "string", default: "3000 Celje" }
+          - { label: "Email", name: "email", widget: "string", default: "servis@epromar.si" }
+
+  # ---------- STORITVE ----------
+  - name: "storitve"
+    label: "Storitve"
+    label_singular: "Storitev"
+    description: "Seznam vseh IT storitev. Lahko dodajate, brišete, prerazvrščate."
+    folder: "src/content/storitve"
+    create: true
+    delete: true
+    slug: "{{id}}"
+    identifier_field: "naziv_prefix"
+    fields:
+      - { label: "ID (URL slug)", name: "id", widget: "string", hint: "Kratek identifikator brez šumnikov, npr. 'servis' ali 'omrezje'" }
+      - { label: "Vrstni red", name: "vrstni_red", widget: "number", default: 1, value_type: "int", min: 1 }
+      - { label: "Ime storitve — glavni del", name: "naziv_prefix", widget: "string", hint: "Npr. 'Servis računalniške'" }
+      - { label: "Ime storitve — poudarek (italic)", name: "naziv_accent", widget: "string", hint: "Npr. 'opreme' (bo poševno)" }
+      - { label: "Kratek opis", name: "kratko", widget: "string", hint: "Ena vrstica, npr. 'Diagnostika, popravilo, garancija.'" }
+      - { label: "Daljši opis", name: "opis", widget: "text", hint: "1-3 stavki, ki podrobneje pojasnijo storitev" }
+      - label: "Ključne točke"
+        name: "bullets"
+        widget: "list"
+        min: 1
+        max: 6
+        hint: "Krajše točke, ki se prikažejo kot seznam"
+        field: { label: "Točka", name: "bullet", widget: "string" }
+      - { label: "Statistika — vrednost", name: "stat_value", widget: "string", hint: "Npr. 'od 1993', '4 h', 'Cat 6 / OS2'" }
+      - { label: "Statistika — opis", name: "stat_label", widget: "string", hint: "Npr. 'aktivno servisiramo', 'odzivni čas'" }
+
+  # ---------- REFERENCE ----------
+  - name: "reference"
+    label: "Reference"
+    label_singular: "Logo stranke"
+    description: "Logoti strank, ki se prikazujejo v drsečem traku."
+    folder: "src/content/reference"
+    create: true
+    delete: true
+    slug: "{{ime}}"
+    identifier_field: "ime"
+    fields:
+      - { label: "Ime stranke", name: "ime", widget: "string" }
+      - { label: "Logo (PNG ali SVG)", name: "logo", widget: "image", hint: "Priporočamo prozorno PNG ozadje, optimalno ~200x80 px" }
+      - { label: "Vrstni red", name: "vrstni_red", widget: "number", default: 1, value_type: "int", min: 1 }
+
+  # ---------- KONTAKT ----------
+  - name: "kontakt"
+    label: "Kontakt"
+    description: "Kontaktni podatki, delovni čas in zemljevid."
+    files:
+      - file: "src/content/kontakt.json"
+        name: "kontakt"
+        label: "Kontakt informacije"
+        fields:
+          - { label: "Telefonska številka", name: "telefon", widget: "string", default: "03 490 11 90" }
+          - { label: "Email", name: "email", widget: "string", default: "servis@epromar.si" }
+          - { label: "Naslov ulice", name: "ulica", widget: "string", default: "Kosovelova 16" }
+          - { label: "Mesto in poštna številka", name: "mesto", widget: "string", default: "3000 Celje" }
+          - label: "Delovni čas"
+            name: "delovni_cas"
+            widget: "list"
+            fields:
+              - { label: "Dan / dnevi", name: "dan", widget: "string", hint: "Npr. 'Ponedeljek - Petek'" }
+              - { label: "Ure", name: "ure", widget: "string", hint: "Npr. '8:00 - 16:00'" }
+
+  # ---------- O PODJETJU ----------
+  - name: "podjetje"
+    label: "O podjetju"
+    description: "Sekcija z opisom podjetja in zgodovino."
+    files:
+      - file: "src/content/o-podjetju.json"
+        name: "o_podjetju"
+        label: "O podjetju"
+        fields:
+          - { label: "Naslov sekcije", name: "naslov", widget: "string", default: "O podjetju" }
+          - { label: "Glavni opis", name: "opis", widget: "text" }
+          - { label: "Leto ustanovitve", name: "leto", widget: "string", default: "1993" }
+          - { label: "Število let izkušenj", name: "let_izkusenj", widget: "string", default: "30+" }
