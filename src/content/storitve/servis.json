@@ -1,0 +1,16 @@
+{
+  "id": "servis",
+  "vrstni_red": 1,
+  "naziv_prefix": "Servis računalniške",
+  "naziv_accent": "opreme",
+  "kratko": "Diagnostika, popravilo, garancija.",
+  "opis": "Servisiramo strojno in programsko računalniško opremo — testiranje, diagnostika, odprava napake. Posege izvajamo večinoma na lokaciji stranke, na podlagi prijave napake ali sklenjene vzdrževalne pogodbe.",
+  "bullets": [
+    "Hiter odzivni čas",
+    "Servis na lokaciji stranke",
+    "Garancija na opravljeno delo",
+    "Diagnostika strojne in programske opreme"
+  ],
+  "stat_value": "od 1993",
+  "stat_label": "aktivno servisiramo"
+}

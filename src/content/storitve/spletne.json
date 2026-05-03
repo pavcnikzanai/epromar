@@ -1,0 +1,16 @@
+{
+  "id": "spletne",
+  "vrstni_red": 6,
+  "naziv_prefix": "Spletne",
+  "naziv_accent": "storitve",
+  "kratko": "Spletne strani in optimizacija.",
+  "opis": "Izdelava spletnih strani, SEO optimizacija in grafična podoba. Celovita digitalna prisotnost — od idejne zasnove preko izvedbe do tehnične podpore in vzdrževanja.",
+  "bullets": [
+    "Izdelava spletnih strani",
+    "SEO optimizacija",
+    "Grafično oblikovanje",
+    "Hosting in vzdrževanje"
+  ],
+  "stat_value": "celostno",
+  "stat_label": "od ideje do produkcije"
+}

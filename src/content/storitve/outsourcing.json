@@ -1,0 +1,16 @@
+{
+  "id": "outsourcing",
+  "vrstni_red": 2,
+  "naziv_prefix": "Outsourcing IT",
+  "naziv_accent": "storitev",
+  "kratko": "Vaš zunanji IT oddelek.",
+  "opis": "Zunanje izvajanje IT podpore za podjetja, ki nimajo lastnega IT oddelka. Prevzamemo upravljanje računalniške infrastrukture in poskrbimo, da se vaše podjetje osredotoči na svojo primarno dejavnost.",
+  "bullets": [
+    "Osredotočenje na primarno dejavnost",
+    "Znižanje stroškov poslovanja",
+    "Manjša odvisnost od lastnega kadra",
+    "Spremenite fiksne stroške v variabilne"
+  ],
+  "stat_value": "20+ let",
+  "stat_label": "izkušenj z outsourcingom"
+}

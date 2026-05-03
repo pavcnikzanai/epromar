@@ -1,0 +1,16 @@
+{
+  "id": "omrezje",
+  "vrstni_red": 5,
+  "naziv_prefix": "Omrežna",
+  "naziv_accent": "infrastruktura",
+  "kratko": "Projekt, ožičenje, meritve.",
+  "opis": "Projektiranje, polaganje in zaključevanje optičnih in bakrenih kablov. Izvedemo celoten projekt — od idejne zasnove preko ožičenja do meritev in dokumentacije omrežne infrastrukture.",
+  "bullets": [
+    "Projektna dokumentacija",
+    "Optično in bakreno ožičenje",
+    "Meritve omrežja s certifikatom",
+    "Strukturirana kabelska infrastruktura"
+  ],
+  "stat_value": "Cat 6 / OS2",
+  "stat_label": "standardi izvedbe"
+}

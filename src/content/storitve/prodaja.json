@@ -1,0 +1,16 @@
+{
+  "id": "prodaja",
+  "vrstni_red": 3,
+  "naziv_prefix": "Prodaja računalnikov in",
+  "naziv_accent": "opreme",
+  "kratko": "Računalniki, oprema, elektronika.",
+  "opis": "Prodaja računalniške in druge elektronske opreme. Brezplačno svetovanje pri izbiri opreme za vaše potrebe in proračun. Za vso opremo nudimo namestitev operacijskega sistema in osnovne programske opreme.",
+  "bullets": [
+    "Računalniki, prenosniki, periferija",
+    "Brezplačno svetovanje pri nakupu",
+    "Namestitev OS in programske opreme",
+    "Priklop na domu ali v pisarni"
+  ],
+  "stat_value": "8–16h",
+  "stat_label": "vsak delovni dan na Kosovelovi 16"
+}

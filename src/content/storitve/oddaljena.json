@@ -1,0 +1,16 @@
+{
+  "id": "oddaljena",
+  "vrstni_red": 7,
+  "naziv_prefix": "Oddaljena",
+  "naziv_accent": "pomoč",
+  "kratko": "Težava rešena brez obiska.",
+  "opis": "Hitro in učinkovito reševanje težav preko oddaljenega dostopa. Po telefonskem klicu se povežemo na vaš računalnik in težavo rešimo brez obiska — v večini primerov v nekaj minutah.",
+  "bullets": [
+    "Brez čakanja na obisk",
+    "Povezava preko šifriranega kanala",
+    "Reševanje programskih napak",
+    "Pomoč pri uporabi opreme"
+  ],
+  "stat_value": "7–15 h",
+  "stat_label": "razpoložljivost ekipe"
+}

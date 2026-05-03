@@ -1,0 +1,16 @@
+{
+  "id": "vzdrzevanje",
+  "vrstni_red": 4,
+  "naziv_prefix": "Pogodbeno",
+  "naziv_accent": "vzdrževanje",
+  "kratko": "Preventiva pred izpadom.",
+  "opis": "Sklenitev vzdrževalne pogodbe nudi zagotovljen odzivni čas, redne preventivne preglede, posodobitve in nadomestno opremo. Priporočamo podjetjem, ki so odvisna od delovanja računalniške opreme.",
+  "bullets": [
+    "Zagotovljen odzivni čas",
+    "Redni preventivni pregledi",
+    "Posodobitve sistemov",
+    "Nadomestna oprema ob težavi"
+  ],
+  "stat_value": "4 h",
+  "stat_label": "odzivni čas v paketu"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "os",
+  "vrstni_red": 8,
+  "naziv_prefix": "Sistemi in programska",
+  "naziv_accent": "oprema",
+  "kratko": "OS, gonilniki, namestitev.",
+  "opis": "Namestitev operacijskih sistemov (Windows in drugi), gonilnikov in osnovne programske opreme. Pridemo na dom ali v pisarno — poskrbimo za osnovno delovanje in zaščito računalnika.",
+  "bullets": [
+    "Namestitev operacijskih sistemov",
+    "Gonilniki in posodobitve",
+    "Antivirusna zaščita",
+    "Migracija podatkov"
+  ],
+  "stat_value": "na lokaciji",
+  "stat_label": "doma ali v pisarni"
+}
