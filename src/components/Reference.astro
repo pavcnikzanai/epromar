@@ -1,14 +1,12 @@
 ---
-const logos = [
-  { src: '/lafarge.png',        alt: 'Lafarge Cement' },
-  { src: '/tus.png',            alt: 'Engro Tuš' },
-  { src: '/etol.png',           alt: 'Etol' },
-  { src: '/elektro-celje.png',  alt: 'Elektro Celje' },
-  { src: '/slgcelje.png',       alt: 'SLG Celje' },
-  { src: '/scc-celje.png',      alt: 'Šolski center Celje' },
-  { src: '/lancom.png',         alt: 'LANcom' },
-  { src: '/hardstore.png',      alt: 'Hardstore' },
-];
+// Naloži vse logote iz /src/content/reference/*.json
+// (Janko jih ureja preko /admin → Reference)
+const refModules = import.meta.glob('../content/reference/*.json', { eager: true });
+
+const logos = Object.values(refModules)
+  .map((m: any) => m.default || m)
+  .sort((a, b) => (a.vrstni_red || 99) - (b.vrstni_red || 99))
+  .map(r => ({ src: r.logo, alt: r.ime }));
 ---
 
 <style>
