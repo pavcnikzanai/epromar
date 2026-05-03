@@ -1,0 +1,52 @@
+---
+const logos = [
+  { src: '/lafarge.png',        alt: 'Lafarge Cement' },
+  { src: '/tus.png',            alt: 'Engro Tuš' },
+  { src: '/etol.png',           alt: 'Etol' },
+  { src: '/elektro-celje.png',  alt: 'Elektro Celje' },
+  { src: '/slgcelje.png',       alt: 'SLG Celje' },
+  { src: '/scc-celje.png',      alt: 'Šolski center Celje' },
+  { src: '/lancom.png',         alt: 'LANcom' },
+  { src: '/hardstore.png',      alt: 'Hardstore' },
+];
+---
+
+<style>
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+</style>
+
+<section id="reference" class="py-8 overflow-hidden bg-white">
+
+  <div class="text-center mb-5 px-6">
+    <p class="text-gray-400 text-xs font-medium tracking-widest uppercase">Zaupajo nam</p>
+  </div>
+
+  <!-- Marquee -->
+  <div class="relative overflow-hidden">
+    <!-- Edge fades -->
+    <div class="absolute left-0 top-0 bottom-0 w-6 z-10 pointer-events-none" style="background: linear-gradient(to right, white, transparent);"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-6 z-10 pointer-events-none" style="background: linear-gradient(to left, white, transparent);"></div>
+
+    <div class="marquee-track">
+      {[...logos, ...logos].map(logo => (
+        <div class="mx-8 flex-shrink-0 flex items-center justify-center" style="width: 160px; height: 70px;">
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            class="w-full h-full object-contain"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+</section>

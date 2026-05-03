@@ -1,0 +1,575 @@
+---
+const storitve = [
+  {
+    id: 'servis',
+    naziv_prefix: 'Servis računalniške',
+    naziv_accent: 'opreme',
+    kratko: 'Diagnostika, popravilo, garancija.',
+    opis: 'Servisiramo strojno in programsko računalniško opremo — testiranje, diagnostika, odprava napake. Posege izvajamo večinoma na lokaciji stranke, na podlagi prijave napake ali sklenjene vzdrževalne pogodbe.',
+    bullets: [
+      'Hiter odzivni čas',
+      'Servis na lokaciji stranke',
+      'Garancija na opravljeno delo',
+      'Diagnostika strojne in programske opreme',
+    ],
+    stat: { value: 'od 1993', label: 'aktivno servisiramo' },
+  },
+  {
+    id: 'outsourcing',
+    naziv_prefix: 'Outsourcing IT',
+    naziv_accent: 'storitev',
+    kratko: 'Vaš zunanji IT oddelek.',
+    opis: 'Zunanje izvajanje IT podpore za podjetja, ki nimajo lastnega IT oddelka. Prevzamemo upravljanje računalniške infrastrukture in poskrbimo, da se vaše podjetje osredotoči na svojo primarno dejavnost.',
+    bullets: [
+      'Osredotočenje na primarno dejavnost',
+      'Znižanje stroškov poslovanja',
+      'Manjša odvisnost od lastnega kadra',
+      'Spremenite fiksne stroške v variabilne',
+    ],
+    stat: { value: '20+ let', label: 'izkušenj z outsourcingom' },
+  },
+  {
+    id: 'prodaja',
+    naziv_prefix: 'Prodaja računalnikov in',
+    naziv_accent: 'opreme',
+    kratko: 'Računalniki, oprema, elektronika.',
+    opis: 'Prodaja računalniške in druge elektronske opreme. Brezplačno svetovanje pri izbiri opreme za vaše potrebe in proračun. Za vso opremo nudimo namestitev operacijskega sistema in osnovne programske opreme.',
+    bullets: [
+      'Računalniki, prenosniki, periferija',
+      'Brezplačno svetovanje pri nakupu',
+      'Namestitev OS in programske opreme',
+      'Priklop na domu ali v pisarni',
+    ],
+    stat: { value: '8–16h', label: 'vsak delovni dan na Kosovelovi 16' },
+  },
+  {
+    id: 'vzdrzevanje',
+    naziv_prefix: 'Pogodbeno',
+    naziv_accent: 'vzdrževanje',
+    kratko: 'Preventiva pred izpadom.',
+    opis: 'Sklenitev vzdrževalne pogodbe nudi zagotovljen odzivni čas, redne preventivne preglede, posodobitve in nadomestno opremo. Priporočamo podjetjem, ki so odvisna od delovanja računalniške opreme.',
+    bullets: [
+      'Zagotovljen odzivni čas',
+      'Redni preventivni pregledi',
+      'Posodobitve sistemov',
+      'Nadomestna oprema ob težavi',
+    ],
+    stat: { value: '4 h', label: 'odzivni čas v paketu' },
+  },
+  {
+    id: 'omrezje',
+    naziv_prefix: 'Omrežna',
+    naziv_accent: 'infrastruktura',
+    kratko: 'Projekt, ožičenje, meritve.',
+    opis: 'Projektiranje, polaganje in zaključevanje optičnih in bakrenih kablov. Izvedemo celoten projekt — od idejne zasnove preko ožičenja do meritev in dokumentacije omrežne infrastrukture.',
+    bullets: [
+      'Projektna dokumentacija',
+      'Optično in bakreno ožičenje',
+      'Meritve omrežja s certifikatom',
+      'Strukturirana kabelska infrastruktura',
+    ],
+    stat: { value: 'Cat 6 / OS2', label: 'standardi izvedbe' },
+  },
+  {
+    id: 'spletne',
+    naziv_prefix: 'Spletne',
+    naziv_accent: 'storitve',
+    kratko: 'Spletne strani in optimizacija.',
+    opis: 'Izdelava spletnih strani, SEO optimizacija in grafična podoba. Celovita digitalna prisotnost — od idejne zasnove preko izvedbe do tehnične podpore in vzdrževanja.',
+    bullets: [
+      'Izdelava spletnih strani',
+      'SEO optimizacija',
+      'Grafično oblikovanje',
+      'Hosting in vzdrževanje',
+    ],
+    stat: { value: 'celostno', label: 'od ideje do produkcije' },
+  },
+  {
+    id: 'oddaljena',
+    naziv_prefix: 'Oddaljena',
+    naziv_accent: 'pomoč',
+    kratko: 'Težava rešena brez obiska.',
+    opis: 'Hitro in učinkovito reševanje težav preko oddaljenega dostopa. Po telefonskem klicu se povežemo na vaš računalnik in težavo rešimo brez obiska — v večini primerov v nekaj minutah.',
+    bullets: [
+      'Brez čakanja na obisk',
+      'Povezava preko šifriranega kanala',
+      'Reševanje programskih napak',
+      'Pomoč pri uporabi opreme',
+    ],
+    stat: { value: '7–15 h', label: 'razpoložljivost ekipe' },
+  },
+  {
+    id: 'os',
+    naziv_prefix: 'Sistemi in programska',
+    naziv_accent: 'oprema',
+    kratko: 'OS, gonilniki, namestitev.',
+    opis: 'Namestitev operacijskih sistemov (Windows in drugi), gonilnikov in osnovne programske opreme. Pridemo na dom ali v pisarno — poskrbimo za osnovno delovanje in zaščito računalnika.',
+    bullets: [
+      'Namestitev operacijskih sistemov',
+      'Gonilniki in posodobitve',
+      'Antivirusna zaščita',
+      'Migracija podatkov',
+    ],
+    stat: { value: 'na lokaciji', label: 'doma ali v pisarni' },
+  },
+];
+---
+
+<style>
+  .storitve-wall {
+    background: #0A0F1E;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .storitve-wall::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 90%);
+  }
+  .storitve-wall::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 80% 0%, rgba(77,142,255,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 0% 100%, rgba(27,60,143,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .serif-it { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+  /* ============ ROWS ============ */
+  .row {
+    position: relative;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    contain: layout paint;
+  }
+  .row:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+  .row-trigger {
+    width: 100%;
+    background: none;
+    border: 0;
+    padding: 22px 0;
+    color: inherit;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: baseline;
+    gap: 24px;
+    text-align: left;
+    font-family: inherit;
+  }
+
+  .row-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3);
+    transition: color 0.3s linear;
+    padding-top: 0.6em;
+  }
+
+  .row-name {
+    font-size: clamp(1.6rem, 3.6vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: rgba(255,255,255,0.28);
+    transition:
+      color 0.3s linear,
+      transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.22em;
+    flex-wrap: wrap;
+    will-change: color;
+  }
+
+  .row-name .accent {
+    color: inherit;
+    transition: color 0.3s linear;
+    font-style: italic;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .row-stat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.4);
+    transition: color 0.3s linear;
+    padding-top: 0.6em;
+    white-space: nowrap;
+  }
+
+  /* left indicator line */
+  .row-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent 0%, #4D8EFF 50%, transparent 100%);
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    will-change: transform;
+  }
+
+  /* ============ HOVER / ACTIVE STATES ============ */
+  /* Whole list dims when something is active — except the active row */
+  .wall-list[data-has-active="true"] .row[data-active="false"] .row-num,
+  .wall-list[data-has-active="true"] .row[data-active="false"] .row-name,
+  .wall-list[data-has-active="true"] .row[data-active="false"] .row-stat {
+    color: rgba(255,255,255,0.14);
+  }
+
+  /* Active row — strong state */
+  .row[data-active="true"] .row-num { color: #89B4FF; }
+  .row[data-active="true"] .row-name {
+    color: #ffffff;
+    transform: translateX(8px);
+  }
+  .row[data-active="true"] .row-name .accent { color: #89B4FF; }
+  .row[data-active="true"] .row-stat { color: rgba(255,255,255,0.9); }
+  .row[data-active="true"] .row-bar { transform: scaleY(1); }
+
+  /* hover when none active yet */
+  @media (hover: hover) {
+    .wall-list:not([data-has-active="true"]) .row:hover .row-num { color: rgba(255,255,255,0.85); }
+    .wall-list:not([data-has-active="true"]) .row:hover .row-name { color: rgba(255,255,255,0.6); }
+    .wall-list:not([data-has-active="true"]) .row:hover .row-stat { color: rgba(255,255,255,0.7); }
+  }
+
+  /* ============ PANEL ============ */
+  .row-panel {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition:
+      max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+      opacity 0.25s linear;
+    will-change: max-height;
+  }
+  .row[data-active="true"] .row-panel {
+    max-height: 600px;
+    opacity: 1;
+  }
+
+  .panel-inner {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    padding: 0 0 36px 0;
+  }
+
+  .panel-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .panel-opis {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 58ch;
+  }
+
+  .panel-bullets {
+    display: grid;
+    gap: 10px;
+  }
+  .panel-bullets li {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    list-style: none;
+  }
+  .panel-bullets li::before {
+    content: '';
+    flex: 0 0 14px;
+    height: 1px;
+    background: #4D8EFF;
+    transform: translateY(-4px);
+  }
+
+  .panel-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .panel-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+  }
+  .panel-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px 10px 22px;
+    border-radius: 999px;
+    background: #fff;
+    color: #0A0F1E;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.4s, transform 0.4s cubic-bezier(0.32,0.72,0,1);
+  }
+  .panel-cta:hover { background: #BCD0FF; transform: translateX(4px); }
+  .panel-cta svg { transition: transform 0.4s cubic-bezier(0.32,0.72,0,1); }
+  .panel-cta:hover svg { transform: rotate(-45deg); }
+
+  /* ============ SCROLL-IN STAGGER ============ */
+  .row {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .storitve-wall.in-view .row {
+    animation: row-in 0.85s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  }
+  .storitve-wall.in-view .row:nth-child(1) { animation-delay: 0.05s; }
+  .storitve-wall.in-view .row:nth-child(2) { animation-delay: 0.11s; }
+  .storitve-wall.in-view .row:nth-child(3) { animation-delay: 0.17s; }
+  .storitve-wall.in-view .row:nth-child(4) { animation-delay: 0.23s; }
+  .storitve-wall.in-view .row:nth-child(5) { animation-delay: 0.29s; }
+  .storitve-wall.in-view .row:nth-child(6) { animation-delay: 0.35s; }
+  .storitve-wall.in-view .row:nth-child(7) { animation-delay: 0.41s; }
+  .storitve-wall.in-view .row:nth-child(8) { animation-delay: 0.47s; }
+  @keyframes row-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* header fade-in */
+  .head-el { opacity: 0; transform: translateY(14px); }
+  .storitve-wall.in-view .head-el {
+    animation: row-in 0.95s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  }
+  .storitve-wall.in-view .head-el:nth-child(1) { animation-delay: 0.0s; }
+  .storitve-wall.in-view .head-el:nth-child(2) { animation-delay: 0.08s; }
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 768px) {
+    .row-trigger {
+      grid-template-columns: 36px 1fr;
+      gap: 14px;
+      padding: 18px 0;
+    }
+    .row-stat {
+      grid-column: 2 / -1;
+      padding-top: 6px;
+      font-size: 11px;
+    }
+    .row-name {
+      font-size: clamp(1.4rem, 6.5vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .row[data-active="true"] .row-name { transform: none; }
+
+    .panel-inner {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding-bottom: 28px;
+    }
+    .panel-content {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .panel-opis { font-size: 15px; }
+    .panel-foot { flex-direction: column; align-items: stretch; }
+    .panel-cta { justify-content: space-between; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .row, .head-el {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .row-name, .row-num, .row-stat, .row-panel { transition: none !important; }
+  }
+</style>
+
+<section id="storitve" class="storitve-wall py-28 lg:py-40">
+
+  <div class="relative max-w-[1500px] mx-auto px-6 lg:px-14">
+
+    <!-- Section header -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 lg:mb-24">
+      <div class="lg:col-span-5 head-el">
+        <div class="mono inline-flex items-center gap-2.5 text-[11px] tracking-[0.22em] uppercase text-white/55">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#4D8EFF]"></span>
+          <span>Storitve — 01 / 08</span>
+        </div>
+      </div>
+      <div class="lg:col-span-7 head-el">
+        <h2 class="text-white font-black tracking-[-0.035em]" style="font-size: clamp(1.9rem, 3.6vw, 3.2rem); line-height: 1.05; text-wrap: balance;">
+          Vse, kar imate v omrežju, <span class="serif-it" style="font-weight: 400; color: #BCD0FF;">znamo popraviti.</span>
+        </h2>
+      </div>
+    </div>
+
+    <!-- Wall of rows -->
+    <div class="wall-list" data-has-active="true">
+      {storitve.map((s, i) => (
+        <div class="row" data-row={s.id} data-active={i === 0 ? "true" : "false"}>
+          <span class="row-bar" aria-hidden="true"></span>
+
+          <button
+            type="button"
+            class="row-trigger"
+            data-target={s.id}
+            aria-expanded={i === 0 ? "true" : "false"}
+            aria-controls={`panel-${s.id}`}
+          >
+            <span class="row-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="row-name">
+              <span>{s.naziv_prefix}</span>
+              <span class="accent">{s.naziv_accent}</span>
+            </span>
+            <span class="row-stat">{s.stat.value}</span>
+          </button>
+
+          <div class="row-panel" id={`panel-${s.id}`} role="region">
+            <div class="panel-inner">
+              <span aria-hidden="true"></span>
+              <div>
+                <div class="panel-content">
+                  <p class="panel-opis">{s.opis}</p>
+                  <ul class="panel-bullets">
+                    {s.bullets.map(b => <li>{b}</li>)}
+                  </ul>
+                </div>
+
+                <div class="panel-foot">
+                  <div>
+                    <div class="text-white text-[1.3rem] font-bold tracking-tight" style="font-variant-numeric: tabular-nums;">
+                      {s.stat.value}
+                    </div>
+                    <div class="panel-stat-label">{s.stat.label}</div>
+                  </div>
+
+                  <a href="#kontakt" class="panel-cta">
+                    <span>Povprašaj o tej storitvi</span>
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                      <path d="M5 11 L11 5 M6 5 L11 5 L11 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Outro line -->
+    <div class="head-el outro mt-20 lg:mt-28">
+      <p class="outro-q">
+        Niste našli, kar potrebujete?
+      </p>
+      <p class="outro-a">
+        Pokličite in ugotovimo, če lahko pomagamo. <a href="tel:+38634901190">03 490 11 90</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const wall = document.querySelector('.storitve-wall') as HTMLElement | null;
+  const list = document.querySelector('.wall-list') as HTMLElement | null;
+  const rows = document.querySelectorAll<HTMLElement>('.row');
+  const triggers = document.querySelectorAll<HTMLButtonElement>('.row-trigger');
+
+  let currentActive: string | null = 'servis';
+  let activateRaf = 0;
+
+  function activate(id: string) {
+    if (currentActive === id) return;
+    currentActive = id;
+    cancelAnimationFrame(activateRaf);
+    activateRaf = requestAnimationFrame(() => {
+      rows.forEach(r => {
+        const isActive = r.dataset.row === id;
+        if ((r.dataset.active === 'true') === isActive) return;
+        r.dataset.active = isActive ? 'true' : 'false';
+        const btn = r.querySelector('.row-trigger') as HTMLButtonElement | null;
+        if (btn) btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      });
+      if (list) list.dataset.hasActive = 'true';
+    });
+  }
+
+  function toggle(id: string) {
+    const target = document.querySelector(`.row[data-row="${id}"]`) as HTMLElement | null;
+    if (!target) return;
+    const isActive = target.dataset.active === 'true';
+    if (isActive) {
+      target.dataset.active = 'false';
+      const btn = target.querySelector('.row-trigger') as HTMLButtonElement | null;
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      if (list) list.dataset.hasActive = 'false';
+      currentActive = null;
+    } else {
+      activate(id);
+    }
+  }
+
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  triggers.forEach(t => {
+    if (isFinePointer) {
+      t.addEventListener('mouseenter', () => {
+        const id = t.dataset.target;
+        if (id) activate(id);
+      });
+      t.addEventListener('focus', () => {
+        const id = t.dataset.target;
+        if (id) activate(id);
+      });
+    }
+    t.addEventListener('click', () => {
+      const id = t.dataset.target;
+      if (!id) return;
+      if (isFinePointer) {
+        activate(id);
+      } else {
+        toggle(id);
+      }
+    });
+  });
+
+  // Scroll-in reveal
+  if (wall) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          wall.classList.add('in-view');
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.12 });
+    io.observe(wall);
+  }
+</script>

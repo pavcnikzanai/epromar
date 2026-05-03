@@ -1,0 +1,68 @@
+---
+import '@fontsource-variable/nunito';
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Epromar d.o.o. — servis, prodaja, vzdrževanje in povezovanje računalnikov za podjetja v Celju in okolici. Zanesljiv IT partner od leta 1993.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0A0F1E" />
+    <meta property="og:title" content={`${title} | Epromar`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="sl_SI" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Epromar</title>
+
+    <style is:global>
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      body {
+        background-color: #0A0F1E;
+      }
+      ::selection {
+        background: rgba(77, 142, 255, 0.35);
+        color: #ffffff;
+      }
+      ::-moz-selection {
+        background: rgba(77, 142, 255, 0.35);
+        color: #ffffff;
+      }
+      /* Subtle scrollbar (webkit) */
+      ::-webkit-scrollbar { width: 10px; height: 10px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(10, 15, 30, 0.25);
+        border-radius: 999px;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(10, 15, 30, 0.45);
+        background-clip: padding-box;
+        border: 2px solid transparent;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body class="font-sans text-gray-800 bg-white">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,30 @@
+# build output
+dist/
+.output/
+.vercel/
+.netlify/
+
+# dependencies
+node_modules/
+
+# environment variables
+.env
+.env.production
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Astro cache
+.astro/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# editor / claude state
+.claude/
+skills-lock.json
