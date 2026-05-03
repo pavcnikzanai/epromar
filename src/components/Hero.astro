@@ -1,4 +1,6 @@
 ---
+import heroData from '../content/hero.json';
+
 const now = new Date();
 const day = now.getDay();
 const hour = now.getHours();
@@ -264,23 +266,23 @@ const photoUrl = 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=85
           <h1 class="text-white font-extrabold tracking-[-0.035em]" style="font-size: clamp(2.4rem, 5.4vw, 4.8rem); line-height: 1;">
             <span class="reveal-line l1">
               <span class="reveal-inner">
-                <span class="hl-word">Servis,</span> <span class="hl-word">prodaja,</span>
+                {heroData.title_1.split(' ').map((w, i) => <><span class="hl-word">{w}</span>{i < heroData.title_1.split(' ').length - 1 ? ' ' : ''}</>)}
               </span>
             </span>
             <span class="reveal-line l2">
               <span class="reveal-inner">
-                <span class="hl-word">vzdrževanje</span> <span class="hl-word">in</span>
+                {heroData.title_2.split(' ').map((w, i) => <><span class="hl-word">{w}</span>{i < heroData.title_2.split(' ').length - 1 ? ' ' : ''}</>)}
               </span>
             </span>
             <span class="reveal-line l3">
               <span class="reveal-inner">
-                <span class="hl-accent serif-it" style="font-weight: 400; letter-spacing: -0.015em; padding-right: 0.05em;">povezovanje</span><span class="hl-word"> računalnikov.</span>
+                <span class="hl-accent serif-it" style="font-weight: 400; letter-spacing: -0.015em; padding-right: 0.05em;">{heroData.title_accent}</span><span class="hl-word"> {heroData.title_end}</span>
               </span>
             </span>
           </h1>
 
           <p class="fade-up text-white/55 text-base md:text-[17px] leading-[1.6] max-w-[55ch] mt-7 lg:mt-9" style="animation-delay: 0.7s;">
-            Celostne IT rešitve za manjša in srednja podjetja v Celju in okolici. Servis, omrežna infrastruktura in outsourcing IT podpore — od leta 1993.
+            {heroData.subtitle}
           </p>
 
           <div class="fade-up flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-7 mt-8" style="animation-delay: 0.85s;">
@@ -292,8 +294,8 @@ const photoUrl = 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=85
                 </svg>
               </span>
             </a>
-            <a href="tel:+38634901190" class="quiet-link inline-flex items-center px-3 py-2.5 text-white/70 text-[15px] hover:text-white">
-              03 490 11 90
+            <a href={`tel:+386${heroData.telefon.replace(/\s|^0/g, '')}`} class="quiet-link inline-flex items-center px-3 py-2.5 text-white/70 text-[15px] hover:text-white">
+              {heroData.telefon}
             </a>
           </div>
 
@@ -318,7 +320,7 @@ const photoUrl = 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=85
 
                 <!-- Bottom caption -->
                 <div class="photo-caption">
-                  servis · omrežja · strežniki · IT podpora
+                  {heroData.caption}
                 </div>
               </div>
             </div>
@@ -334,11 +336,11 @@ const photoUrl = 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=85
     <div class="max-w-[1500px] mx-auto px-6 lg:px-14">
       <div class="fade-up flex items-center justify-between py-4 text-white/45 text-[13px]" style="animation-delay: 1.0s;">
         <div class="flex items-center gap-3 sm:gap-4">
-          <span>Kosovelova 16</span>
+          <span>{heroData.naslov}</span>
           <span class="text-white/15">·</span>
-          <span class="hidden sm:inline">3000 Celje</span>
+          <span class="hidden sm:inline">{heroData.mesto}</span>
           <span class="hidden md:inline text-white/15">·</span>
-          <a href="mailto:servis@epromar.si" class="quiet-link hidden md:inline hover:text-white">servis@epromar.si</a>
+          <a href={`mailto:${heroData.email}`} class="quiet-link hidden md:inline hover:text-white">{heroData.email}</a>
         </div>
         <span class="flex items-center gap-2 text-white/35">
           <span>Scroll</span>
